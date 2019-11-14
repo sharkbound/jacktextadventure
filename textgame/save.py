@@ -8,23 +8,23 @@ if TYPE_CHECKING:
 
 __all__ = [
     'SAVE_FILE',
-    'save',
-    'load',
-    'exists'
+    'save_game',
+    'load_game',
+    'save_exists'
 ]
 
 SAVE_FILE = Path('savedata.json')
 
 
-def exists() -> bool:
+def save_exists() -> bool:
     return SAVE_FILE.exists()
 
 
-def load() -> 'Game':
+def load_game() -> 'Game':
     with open(SAVE_FILE) as save:
         return loads(save.read())
 
 
-def save(game: 'Game'):
+def save_game(game: 'Game'):
     with open(SAVE_FILE, 'w') as save:
         save.write(dumps(game, ))
